@@ -5,6 +5,6 @@ $ docker-compose up -d
 $ curl -L http://localhost:8000
 
 ### debug
-$ docker logs -f <containerId>
+$ docker logs -f [containerId]
 
 
