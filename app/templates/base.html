@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', path='/styles/styles.css')}}">
+</head>
+<body>
+<nav>
+    <h2>Blog System</h2>
+    {% if not user %}
+        <ul>
+            <li>
+                <a href="{{ url_for('register') }}">New Registration</a>
+            </li>
+            <li>
+                <a href="{{ url_for('index') }}">Login</a>
+            </li>
+        </ul>
+    {% else %}
+        <h3>{{ user["username"] }}</h3>
+        <ul>
+            <li>
+                <a href="{{ url_for('articles_index') }}">Articles</a>
+            </li>
+            <li>
+                <a href="{{ url_for('create_article_page') }}">Posts</a>
+            </li>
+            <li>
+                <a href="{{ url_for('logout') }}" methods="post">Logout</a>
+            </li>
+        </ul>
+    {% endif %}
+    {% if error %}
+        <p style="color: red">{{ error }}</p>
+    {% endif %}
+    {% if information %}
+        <p style="color: cornflowerblue">{{ information }}</p>
+    {% endif %}
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>
